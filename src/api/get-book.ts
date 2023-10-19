@@ -36,22 +36,14 @@ export default async function getBook(params: Params): Promise<Book> {
   if (!params.isbn13 && !params.isbn && !params.url) {
     throw new Error('No params provided');
   }
-
-  const url =
-    params.url ||
-    'https://www.goodreads.com/search?q=' +
-      encodeURIComponent(params.isbn13 || params.isbn);
-
-  const { document, responseUrl } = await fetch(url);
-
-  const el = element(document);
-
+  const url = params.url || 'https://www.goodreads.com/search?q=' + encodeURIComponent(params.isbn13 || params.isbn),
+    { document, responseUrl } = await fetch(url),
+    el = element(document);
   function singleFind(container: string, searchItem: string) {
     const pubIndex = searchStr.indexOf(searchItem) + searchItem.length,
       containerSub = container.substring(pubIndex);
     return containerSub.substring(0, containerSub.indexOf('"'));
   }
-
   function multipleFind(container: string, searchItem: string) {
     const indices = [...container.matchAll(new RegExp(searchItem, 'gi'))].map(a => a.index),
       arr = [];
@@ -61,14 +53,12 @@ export default async function getBook(params: Params): Promise<Book> {
     });
     return arr;
   }
-
   const infoScriptText = el.query('[type="application/ld+json"]')?.text(),
     infoScript = infoScriptText !== undefined ? JSON.parse(infoScriptText) : {},
     searchStr = el.query('#__NEXT_DATA__').text(),
     originalTitleTest = singleFind(searchStr, ',"originalTitle":"'),
     asinTest = singleFind(searchStr, ',"asin":"'),
     publisherTest = singleFind(searchStr, ',"publisher":"');
-
   const result = {
     id: responseUrl?.split('show/')[1]?.split('-')[0],
     url: el.query('[hreflang="en"]')?.attr('href') || responseUrl,
@@ -93,6 +83,5 @@ export default async function getBook(params: Params): Promise<Book> {
     language: infoScript.inLanguage || null,
     genres: multipleFind(searchStr, '"__typename":"Genre","name":"')
   }
-
   return result as any;
 }

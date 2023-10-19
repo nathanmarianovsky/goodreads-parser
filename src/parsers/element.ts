@@ -1,4 +1,4 @@
-import { escape } from '../utils/string'
+import { escape } from '../utils/string';
 
 export function element(el: Document | Element | null) {
   return {
@@ -6,8 +6,8 @@ export function element(el: Document | Element | null) {
       el.querySelector(selector) && element(el.querySelector(selector)),
     queryAll: (selector: string) => el.querySelectorAll(selector),
     attr: (attribute: string) => {
-      if ((el as Element).getAttribute) {
-        return escape((el as Element).getAttribute(attribute))
+      if((el as Element).getAttribute) {
+        return escape((el as Element).getAttribute(attribute));
       }
     },
     children: () => el.children,

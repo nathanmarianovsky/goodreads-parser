@@ -33,15 +33,15 @@ where searchObj is an object consisting of the three parameters q, page, and fie
 
 ```js
 {
-  "id": string,
-  "url": string,
-  "title": string,
-  "author": string | null,
-  "coverSmall": string | null,
-  "coverLarge": string | null,
-  "rating": number | null,
-  "ratingCount": number | null,
-  "publicationYear": number | null,
+  id: string,
+  url: string,
+  title: string,
+  author: string | null,
+  coverSmall: string | null,
+  coverLarge: string | null,
+  rating: number | null,
+  ratingCount: number | null,
+  publicationYear: number | null
 }
 ```
 
@@ -55,27 +55,27 @@ where bookObj is an object consisting of the three parameters isbn, isbn13, and 
 
 ```js
 {
-  "id": string,
-  "url": string,
-  "title": string,
-  "originalTitle": string || null,
-  "bookLinks": string[],
-  "authors": string[] | null,
-  "description": string | null,
-  "coverSmall": string | null,
-  "coverLarge": string | null,
-  "asin": string | null,
-  "isbn": string | null,
-  "isbn13": string | null,
-  "media": string | null,
-  "pages": number | null,
-  "publicationYear": number | null,
-  "publisher": string | null,
-  "rating": number | null,
-  "ratingCount": number | null,
-  "reviewsCount": number | null,
-  "language": string | null,
-  "genres": string[] | null
+  id: string,
+  url: string,
+  title: string,
+  originalTitle: string || null,
+  bookLinks: string[],
+  authors: string[] | null,
+  description: string | null,
+  coverSmall: string | null,
+  coverLarge: string | null,
+  asin: string | null,
+  isbn: string | null,
+  isbn13: string | null,
+  media: string | null,
+  pages: number | null,
+  publicationYear: number | null,
+  publisher: string | null,
+  rating: number | null,
+  ratingCount: number | null,
+  reviewsCount: number | null,
+  language: string | null,
+  genres: string[] | null
 }
 ```
 
