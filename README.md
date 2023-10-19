@@ -14,13 +14,6 @@ Begin by importing the library:
 
 ```js
 const GoodReadsParser = require("goodreads-scraper");
-
-try {
-  const data = await GoodReadsParser.parseByISBN13("9781788543002");
-  console.log("Book Data::", data);
-} catch (error) {
-  console.log("error", error);
-}
 ```
 
 Once imported there are two functions available to be called. The first of which performs a general search based on the parameters provided:
