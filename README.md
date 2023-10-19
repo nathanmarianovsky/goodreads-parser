@@ -10,7 +10,7 @@ yarn add goodreads-parser
 
 ### Usage
 
-First, import library
+First, import the library:
 
 ```js
 const GoodReadsParser = require("goodreads-parser");
@@ -23,7 +23,76 @@ try {
 }
 ```
 
-Response:
+Once imported there are two functions available to be called. The first of which performs a general search based on the parameters provided:
+
+```js
+GoodreadsParser.searchBooks(searchObj);
+```
+
+where searchObj is an object consisting of the three parameters q, page, and field which takes on one of the values 'title', 'author', or 'genre'. The only required parameter is q corresponding to the query which is to be searched yielding a response in the form:
+
+```js
+{
+  "id": string,
+  "url": string,
+  "title": string,
+  "author": string | null,
+  "coverSmall": string | null,
+  "coverLarge": string | null,
+  "rating": number | null,
+  "ratingCount": number | null,
+  "publicationYear": number | null,
+}
+```
+
+The second function deals with obtaining specific details on a book through:
+
+```js
+GoodreadsParser.getBook(bookObj);
+```
+
+where bookObj is an object consisting of the three parameters isbn, isbn13, and url. At least one of these parameters has to be provided in order to produce a response in the form:
+
+```js
+{
+  "id": string,
+  "url": string,
+  "title": string,
+  "originalTitle": string || null,
+  "bookLinks": string[],
+  "authors": string[] | null,
+  "description": string | null,
+  "coverSmall": string | null,
+  "coverLarge": string | null,
+  "asin": string | null,
+  "isbn": string | null,
+  "isbn13": string | null,
+  "media": string | null,
+  "pages": number | null,
+  "publicationYear": number | null,
+  "publisher": string | null,
+  "rating": number | null,
+  "ratingCount": number | null,
+  "reviewsCount": number | null,
+  "language": string | null,
+  "genres": string[] | null
+}
+```
+
+### Example
+
+Executing the following:
+
+```js
+try {
+  const data = await GoodReadsParser.getBook({ "url": "https://www.goodreads.com/book/show/36262331-the-three-body-problem" });
+  console.log("Response:", data);
+} catch (error) {
+  console.log("Error:", error);
+}
+```
+
+yields the response:
 
 ```js
 {
@@ -58,17 +127,3 @@ Response:
 ### API
 
 You can fetch book data by providing ISBN13 or just the url of the book in format like this: `https://www.goodreads.com/book/show/{ID}`
-
-#### By ISBN13
-
-```js
-const result = await GoodReadsParser.parseByISBN13("123444");
-```
-
-#### By URL
-
-```js
-const result = await GoodReadsParser.parseByURL(
-  "https://www.goodreads.com/book/show/36262331-the-three-body-problem"
-);
-```
