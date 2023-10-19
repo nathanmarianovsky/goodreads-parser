@@ -5,7 +5,7 @@ Goodreads book scraper for Node.js
 ### Install
 
 ```bash
-yarn add goodreads-parser
+yarn add goodreads-scraper
 ```
 
 ### Usage
@@ -13,7 +13,7 @@ yarn add goodreads-parser
 Begin by importing the library:
 
 ```js
-const GoodReadsParser = require("goodreads-parser");
+const GoodReadsParser = require("goodreads-scraper");
 
 try {
   const data = await GoodReadsParser.parseByISBN13("9781788543002");
