@@ -1,6 +1,6 @@
-# goodreads-parser
+# goodreads-scraper
 
-Goodreads book parser for Node.js
+Goodreads book scraper for Node.js
 
 ### Install
 
