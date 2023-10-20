@@ -5,7 +5,7 @@ Goodreads book scraper for Node.js
 ### Install
 
 ```bash
-yarn add goodreads-scraper
+npm install goodreads-scraper
 ```
 
 ### Usage
@@ -13,13 +13,13 @@ yarn add goodreads-scraper
 Begin by importing the library:
 
 ```js
-const GoodReadsParser = require("goodreads-scraper");
+const GoodReadsScraper = require("goodreads-scraper");
 ```
 
 Once imported there are two functions available to be called. The first of which performs a general search based on the parameters provided:
 
 ```js
-GoodreadsParser.searchBooks(searchObj);
+GoodReadsScraper.searchBooks(searchObj);
 ```
 
 where searchObj is an object consisting of the three parameters q, page, and field which takes on one of the values 'title', 'author', or 'genre'. The only required parameter is q corresponding to the query which is to be searched yielding a response in the form:
@@ -41,7 +41,7 @@ where searchObj is an object consisting of the three parameters q, page, and fie
 The second function deals with obtaining specific details on a book:
 
 ```js
-GoodreadsParser.getBook(bookObj);
+GoodReadsScraper.getBook(bookObj);
 ```
 
 where bookObj is an object consisting of the three parameters isbn, isbn13, and url. At least one of these parameters has to be provided in order to produce a response in the form:
@@ -78,7 +78,7 @@ Executing the following:
 
 ```js
 try {
-  const data = await GoodReadsParser.getBook({ "url": "https://www.goodreads.com/book/show/36262331-the-three-body-problem" });
+  const data = await GoodReadsScraper.getBook({ "url": "https://www.goodreads.com/book/show/36262331-the-three-body-problem" });
   console.log("Response:", data);
 } catch (error) {
   console.log("Error:", error);

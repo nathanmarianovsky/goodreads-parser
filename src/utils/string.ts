@@ -1,4 +1,4 @@
-/**
+/*
  * Extracts a string from `source` that is placed between `start` and `end`. The function
  * considers only one instance of start and before, or the first instance and does not support
  * multiple occurences otherwise. If end string is not found, it will return everything after
