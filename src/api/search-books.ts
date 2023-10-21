@@ -27,7 +27,7 @@ type SearchBookItem = {
 }
 
 export default async function searchBooks({ q, page, field, }: SearchBooksProps): Promise<SearchBooksResult> {
-  const { document } = await fetch(`https://goodreads.com/search`, { q, page, field, }),
+  const { document } = await fetch(`https://goodreads.com/search`, { q, page, field }),
     resultInfo = element(document).query('.searchSubNavContainer').text(),
     [pageInfo, totalInfo] = resultInfo.split('of about'),
     trs = document.querySelectorAll('[itemtype^="http://schema.org/Book"]');
