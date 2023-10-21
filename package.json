@@ -1,6 +1,6 @@
 {
   "name": "goodreads-scraper",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "license": "MIT",
@@ -14,7 +14,8 @@
     "release": "release-it"
   },
   "files": [
-    "build/*"
+    "build/*",
+    "build/**"
   ],
   "repository": {
     "type": "git",
