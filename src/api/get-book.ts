@@ -58,7 +58,8 @@ export default async function getBook(params: Params): Promise<Book> {
     searchStr = el.query('#__NEXT_DATA__').text(),
     originalTitleTest = singleFind(searchStr, ',"originalTitle":"'),
     asinTest = singleFind(searchStr, ',"asin":"'),
-    publisherTest = singleFind(searchStr, ',"publisher":"');
+    publisherTest = singleFind(searchStr, ',"publisher":"'),
+    publicationDateArr = el.query('.FeaturedDetails [data-testid="publicationInfo"]')?.text().split(" ");
   const result = {
     id: responseUrl?.split('show/')[1]?.split('-')[0],
     url: el.query('[hreflang="en"]')?.attr('href') || responseUrl,
@@ -75,7 +76,7 @@ export default async function getBook(params: Params): Promise<Book> {
     isbn13: infoScript.isbn?.toInt() || null,
     media: infoScript.bookFormat || null,
     pages: infoScript.numberOfPages || null,
-    publicationDate: el.query('.FeaturedDetails [data-testid="publicationInfo"]')?.text().split(" ").slice(2).join(" ") || null,
+    publicationDate: publicationDateArr.slice(publicationDateArr.length - 3).join(" ") || null,
     publisher: publisherTest !== 'geProps' ? publisherTest : null,
     rating: infoScript.aggregateRating?.ratingValue || null,
     ratingCount: infoScript.aggregateRating?.ratingCount || null,
