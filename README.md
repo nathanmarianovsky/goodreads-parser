@@ -26,15 +26,21 @@ where searchObj is an object consisting of the three parameters q, page, and fie
 
 ```js
 {
-  id: string,
-  url: string,
-  title: string,
-  author: string | null,
-  coverSmall: string | null,
-  coverLarge: string | null,
-  rating: number | null,
-  ratingCount: number | null,
-  publicationYear: number | null
+  page: number,
+  totalRecords: number,
+  books: [
+    { 
+      id: string,
+      url: string,
+      title: string,
+      author: string | null,
+      coverSmall: string | null,
+      coverLarge: string | null,
+      rating: number | null,
+      ratingCount: number | null,
+      publicationYear: number | null
+    }
+  ]
 }
 ```
 
